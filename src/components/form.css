@@ -1,0 +1,43 @@
+.wrapper{
+  background-color: #fff;
+  height: 100vh;
+  padding: 100px;
+}
+
+.container{
+  border: 1px solid #000;
+}
+
+section {
+  display: flex;
+  align-items: center;
+}
+
+section a {
+  text-decoration: underline;
+  color: blue;
+  margin: 0 auto;
+}
+
+.title {
+  font-family: Arial;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 34px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.title:nth-child(1){
+  opacity: 0.6;
+}
+
+.left{
+  width: 220px;
+}
+
+.middle{
+  white-space: nowrap;
+  width: 330px;
+}
