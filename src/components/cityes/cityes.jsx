@@ -14,12 +14,14 @@ export default function Cityes() {
   return (
     <>
       <select>{list}</select>
-      <div>число жителей от</div>
-      <input
-        type="number"
-        value={population}
-        onChange={(e) => setPopulatin(e.target.value)}
-      ></input>
+      <div className="numb">
+        <div>число жителей от</div>
+        <input
+          type="number"
+          value={population}
+          onChange={(e) => setPopulatin(e.target.value)}
+        ></input>
+      </div>
     </>
   );
 }

@@ -72,7 +72,6 @@ export default function Form() {
     setMonth(months[month]);
     setYear(year);
     setTime(fullcloac(hours, mins, secs));
-
     if (password === secPassword && password !== "" && !emailIsEmpty) {
       const info = {
         password: password,
@@ -108,12 +107,12 @@ export default function Form() {
 
           <section>
             <div className="left"></div>
-            <div className="middle">{status}</div>
+            <div className="middle status">{status}</div>
           </section>
 
           <section>
             <div className="left note">Ваш город</div>
-            <div className="middle">
+            <div className="middle tp">
               <Cityes />
             </div>
           </section>
