@@ -7,6 +7,19 @@ import Cityes from "./cityes/cityes";
 export default function Form() {
   const [status, setStatus] = useState("Прежде чем действовать, надо понять");
   const [state, setState] = useState(false);
+  const [password, setPassword] = useState("");
+  const [secPassword, setSecPassword] = useState("");
+  const [correctPass, setCorrectPass] = useState(true);
+  const [correctEmail, setCorrectEmail] = useState(true);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (password !== secPassword) {
+      setCorrectPass(false);
+    } else {
+      setCorrectPass(true);
+    }
+  }
 
   return (
     <>
@@ -43,11 +56,16 @@ export default function Form() {
             </div>
           </section>
 
-          <form>
+          <form onSubmit={handleSubmit}>
             <section>
               <div className="left note">Пароль</div>
               <div className="middle">
-                <input type="text"></input>
+                <input
+                  className={correctPass ? "normal" : "error"}
+                  type="text"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                ></input>
               </div>
               <div className="decor">
                 Ваш новый пароль должен содержать не менее 5 символов.
@@ -57,7 +75,12 @@ export default function Form() {
             <section>
               <div className="left note">Пароль еще раз</div>
               <div className="middle">
-                <input type="text"></input>
+                <input
+                  className={correctPass ? "normal" : "error"}
+                  type="text"
+                  value={secPassword}
+                  onChange={(e) => setSecPassword(e.target.value)}
+                ></input>
               </div>
               <div className="decor">
                 Повторите пароль, пожалуйста, это обезопасит вас с нами на
@@ -68,7 +91,10 @@ export default function Form() {
             <section>
               <div className="left note">Электронная почта</div>
               <div className="middle">
-                <input type="email"></input>
+                <input
+                  type="email"
+                  className={correctEmail ? "normal" : "error"}
+                ></input>
               </div>
               <div className="decor">
                 Можно изменить адрес, указанный при регистрации.
