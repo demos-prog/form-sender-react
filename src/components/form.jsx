@@ -44,35 +44,35 @@ export default function Form() {
       setEmailIsEmpty(false);
     }
 
-    const now = new Date();
-    const day = now.getDate();
-    const month = now.getMonth();
-    const year = now.getFullYear();
-
-    const hours = now.getHours();
-    const mins = now.getMinutes();
-    const secs = now.getSeconds();
-
-    const months = [
-      "jan",
-      "feb",
-      "mar",
-      "apr",
-      "may",
-      "june",
-      "july",
-      "aug",
-      "sep",
-      "oct",
-      "nov",
-      "dec",
-    ];
-
-    setDay(day);
-    setMonth(months[month]);
-    setYear(year);
-    setTime(fullcloac(hours, mins, secs));
     if (password === secPassword && password !== "" && !emailIsEmpty) {
+      const now = new Date();
+      const day = now.getDate();
+      const month = now.getMonth();
+      const year = now.getFullYear();
+
+      const hours = now.getHours();
+      const mins = now.getMinutes();
+      const secs = now.getSeconds();
+
+      const months = [
+        "jan",
+        "feb",
+        "mar",
+        "apr",
+        "may",
+        "june",
+        "july",
+        "aug",
+        "sep",
+        "oct",
+        "nov",
+        "dec",
+      ];
+
+      setDay(day);
+      setMonth(months[month]);
+      setYear(year);
+      setTime(fullcloac(hours, mins, secs));
       const info = {
         password: password,
         email: email,
