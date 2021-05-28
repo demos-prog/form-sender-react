@@ -9,16 +9,62 @@ export default function Form() {
   const [state, setState] = useState(false);
   const [password, setPassword] = useState("");
   const [secPassword, setSecPassword] = useState("");
-  const [correctPass, setCorrectPass] = useState(true);
-  const [correctEmail, setCorrectEmail] = useState(true);
+  const [passwordIsCorrect, setpasswordIsCorrect] = useState(true);
+  const [email, setEmail] = useState("");
+
+  const [day, setDay] = useState(15);
+  const [month, setMonth] = useState("may");
+  const [year, setYear] = useState(2012);
+  const [time, setTime] = useState("14:55:17");
+
+  function setzero(numb) {
+    if (numb < 10) {
+      return "0" + numb;
+    } else {
+      return numb;
+    }
+  }
+
+  function fullcloac(hours, mins, secs) {
+    return setzero(hours) + ":" + setzero(mins) + ":" + setzero(secs);
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
     if (password !== secPassword) {
-      setCorrectPass(false);
+      setpasswordIsCorrect(false);
     } else {
-      setCorrectPass(true);
+      setpasswordIsCorrect(true);
     }
+
+    const now = new Date();
+    const day = now.getDate();
+    const month = now.getMonth();
+    const year = now.getFullYear();
+
+    const hours = now.getHours();
+    const mins = now.getMinutes();
+    const secs = now.getSeconds();
+
+    const months = [
+      "jan",
+      "feb",
+      "mar",
+      "apr",
+      "may",
+      "june",
+      "july",
+      "aug",
+      "sep",
+      "oct",
+      "nov",
+      "dec",
+    ];
+
+    setDay(day);
+    setMonth(months[month]);
+    setYear(year);
+    setTime(fullcloac(hours, mins, secs));
   }
 
   return (
@@ -61,7 +107,7 @@ export default function Form() {
               <div className="left note">Пароль</div>
               <div className="middle">
                 <input
-                  className={correctPass ? "normal" : "error"}
+                  className={passwordIsCorrect ? "normal" : "error"}
                   type="text"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -76,7 +122,7 @@ export default function Form() {
               <div className="left note">Пароль еще раз</div>
               <div className="middle">
                 <input
-                  className={correctPass ? "normal" : "error"}
+                  className={passwordIsCorrect ? "normal" : "error"}
                   type="text"
                   value={secPassword}
                   onChange={(e) => setSecPassword(e.target.value)}
@@ -92,8 +138,10 @@ export default function Form() {
               <div className="left note">Электронная почта</div>
               <div className="middle">
                 <input
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   type="email"
-                  className={correctEmail ? "normal" : "error"}
+                  className="normal"
                 ></input>
               </div>
               <div className="decor">
@@ -116,7 +164,7 @@ export default function Form() {
               <div className="middle">
                 <button type="submit">Изменить</button>
                 <div className="changes">
-                  последние изменения 15 мая 2012 в 14:55:17
+                  последние изменения {day} {month} {year} в {time}
                 </div>
               </div>
             </section>

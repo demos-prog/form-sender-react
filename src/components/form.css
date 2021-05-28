@@ -110,6 +110,8 @@ section a {
   content: "wrong password";
   position: absolute;
   color: red;
-  top: 20px;
+  top: 0;
   left: 0;
+  width: 100px;
+  height: 20px;
 }
