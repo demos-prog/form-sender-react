@@ -115,3 +115,10 @@ section a {
   width: 100px;
   height: 20px;
 }
+
+.btn{
+  margin-right: 15px;
+  color: #fff;
+  padding: 10px 14px;
+  background-color: #71C838;
+}

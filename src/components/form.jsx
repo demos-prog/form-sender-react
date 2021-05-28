@@ -11,6 +11,7 @@ export default function Form() {
   const [secPassword, setSecPassword] = useState("");
   const [passwordIsCorrect, setpasswordIsCorrect] = useState(true);
   const [email, setEmail] = useState("");
+  const [emailIsEmpty, setEmailIsEmpty] = useState(false);
 
   const [day, setDay] = useState(15);
   const [month, setMonth] = useState("may");
@@ -31,10 +32,16 @@ export default function Form() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (password !== secPassword) {
+    if (password !== secPassword || password === "") {
       setpasswordIsCorrect(false);
     } else {
       setpasswordIsCorrect(true);
+    }
+
+    if (email === "") {
+      setEmailIsEmpty(true);
+    } else {
+      setEmailIsEmpty(false);
     }
 
     const now = new Date();
@@ -65,6 +72,15 @@ export default function Form() {
     setMonth(months[month]);
     setYear(year);
     setTime(fullcloac(hours, mins, secs));
+
+    if (password === secPassword && password !== "" && !emailIsEmpty) {
+      const info = {
+        password: password,
+        email: email,
+      };
+
+      alert(JSON.stringify(info));
+    }
   }
 
   return (
@@ -138,10 +154,10 @@ export default function Form() {
               <div className="left note">Электронная почта</div>
               <div className="middle">
                 <input
+                  className={!emailIsEmpty ? "normal" : "error"}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   type="email"
-                  className="normal"
                 ></input>
               </div>
               <div className="decor">
@@ -162,7 +178,9 @@ export default function Form() {
             <section>
               <div className="left"></div>
               <div className="middle">
-                <button type="submit">Изменить</button>
+                <button className="btn" type="submit">
+                  Изменить
+                </button>
                 <div className="changes">
                   последние изменения {day} {month} {year} в {time}
                 </div>
