@@ -134,6 +134,8 @@ label{
 
 .status {
   padding: 8px 12px;
+  height: auto;
+  white-space: normal;
   background-color: #eaeaea;
 }
 
