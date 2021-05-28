@@ -1,10 +1,11 @@
 import { nanoid } from "nanoid";
-import React from "react";
-import './cityes.css'
+import React, { useState } from "react";
+import "./cityes.css";
 
 export default function Cityes() {
+  const [population, setPopulatin] = useState(50000);
   const list = sortedCities.map((item) => {
-    if (item.population > 50000) {
+    if (item.population > population) {
       return <option key={nanoid()}>{item.city}</option>;
     }
     return null;
@@ -13,6 +14,12 @@ export default function Cityes() {
   return (
     <>
       <select>{list}</select>
+      <div>число жителей от</div>
+      <input
+        type="number"
+        value={population}
+        onChange={(e) => setPopulatin(e.target.value)}
+      ></input>
     </>
   );
 }
@@ -112,8 +119,8 @@ const cities = [
   },
 ];
 
-const sortedCities = cities.sort((a, b)=>{
-  if (a.city < b.city) return -1
-  if (a.city > b.city) return 1
+const sortedCities = cities.sort((a, b) => {
+  if (a.city < b.city) return -1;
+  if (a.city > b.city) return 1;
   return 0;
-})
+});
