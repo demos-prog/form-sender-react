@@ -1,4 +1,5 @@
 .wrapper {
+  position: relative;
   background-color: #fff;
   height: 100vh;
   padding: 100px;
@@ -14,9 +15,14 @@ section {
 }
 
 section a {
+  margin: 0 auto;
+}
+
+.chStatus {
+  margin: 0 auto;
+  cursor: pointer;
   text-decoration: underline;
   color: blue;
-  margin: 0 auto;
 }
 
 .title {
@@ -74,6 +80,7 @@ section a {
   text-align: left;
 }
 
-input[type="text"], input[type="email"]{
+input[type="text"],
+input[type="email"] {
   border: 1px solid #000;
 }

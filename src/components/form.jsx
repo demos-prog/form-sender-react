@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import "./null_styles.css";
 import "./form.css";
+import Modal from "./modal/modal";
 
 export default function Form() {
+  const [status, setStatus] = useState("Прежде чем действовать, надо понять");
+  const [state, setState] = useState(false);
+
   return (
     <>
       <div className="wrapper">
@@ -14,12 +18,14 @@ export default function Form() {
             <div className="middle title">
               <strong>Человек №3452342535</strong>
             </div>
-            <a href="#">Сменить статус</a>
+            <div className="chStatus" onClick={() => setState((p) => !p)}>
+              Сменить статус
+            </div>
           </section>
 
           <section>
             <div className="left"></div>
-            <div className="middle">Прежде чем действовать, надо понять</div>
+            <div className="middle">{status}</div>
           </section>
 
           <section>
@@ -84,6 +90,9 @@ export default function Form() {
             </section>
           </form>
         </div>
+        {state && (
+          <Modal status={status} setStatus={setStatus} setState={setState} />
+        )}
       </div>
     </>
   );
